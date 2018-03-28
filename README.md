@@ -1,6 +1,6 @@
 # Sift Science Java API
 
-The official Java bindings for the latest version (v204) of the [Sift Science API](https://siftscience.com/developers/docs/java/apis-overview) .
+The official Java bindings for the latest version (v205) of the [Sift Science API](https://siftscience.com/developers/docs/java/apis-overview) .
 
 ## Requirements
 Java 1.7 or later.
@@ -234,6 +234,20 @@ ApplyDecisionRequest request = client.buildRequest(
             .setAccountId("your_account_id")
             .setUserId("a_user_id")
             .setSessionId("a_session_id")
+            .setDecisionId("decision_id")
+            .setSource(DecisionSource.MANUAL_REVIEW)
+            .setAnalyst("analyst@example.com")
+            .setDescription("description of decision applied")
+);
+```
+
+To apply a decision to a piece of content, create a request with accountId, userId, contentId and ApplyDecisionFieldSet.
+```java
+ApplyDecisionRequest request = client.buildRequest(
+        new ApplyDecisionFieldSet()
+            .setAccountId("your_account_id")
+            .setUserId("a_user_id")
+            .setContentId("a_content_id")
             .setDecisionId("decision_id")
             .setSource(DecisionSource.MANUAL_REVIEW)
             .setAnalyst("analyst@example.com")
